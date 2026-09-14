@@ -435,52 +435,30 @@ function draw() {
         */
 
 
-        ctx.beginPath();
+    const threshold = 0.01;
+
+if (audioLevel > threshold) {
+
+    const audioForce =
+        audioLevel * 0.5;
 
 
-        ctx.arc(
-
-            particle.x,
-
-            particle.y,
+    particle.vx +=
+        (Math.random() - 0.5)
+        * audioForce;
 
 
-            particle.size,
+    particle.vy +=
+        (Math.random() - 0.5)
+        * audioForce;
 
-            0,
+}
+else {
 
-            Math.PI * 2
+    particle.vx = 0;
+    particle.vy = 0;
 
-        );
-
-
-        ctx.fillStyle =
-            "#7fff00";
-
-
-        ctx.globalAlpha =
-
-            0.15
-
-            +
-
-            audioLevel
-
-            * 0.4;
-
-
-        ctx.fill();
-
-    }
-
-
-    ctx.globalAlpha = 1;
-
-
-    requestAnimationFrame(
-        draw
-    );
-
+}
 }
 
 
